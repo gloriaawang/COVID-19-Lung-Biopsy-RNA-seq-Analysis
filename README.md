@@ -1,5 +1,7 @@
 # COVID-19 Lung Biopsy RNA-seq Analysis
 
+January 2024
+
 This repository contains the analysis of differential gene expression in COVID-19 infected versus uninfected lung biopsy samples, using data from Blanco et al. 2020 (Cell).
 
 ## Project Overview
