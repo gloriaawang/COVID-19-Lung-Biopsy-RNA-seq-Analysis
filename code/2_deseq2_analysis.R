@@ -1,7 +1,5 @@
-# COVID-19 Lung Biopsy RNA-seq Analysis
 # Differential Expression Analysis
 
-# Load required libraries
 library(DESeq2)
 library(dplyr)
 
@@ -23,7 +21,6 @@ counts <- data.frame(
   row.names = rownames(uninfected1)
 )
 
-# Round counts to integers
 counts <- round(counts)
 
 # Create sample information
@@ -36,7 +33,7 @@ samples <- data.frame(
 dds <- DESeqDataSetFromMatrix(counts, samples, design = ~ group)
 dds <- DESeq(dds)
 
-# Get results for infected vs uninfected
+
 infected_vs_uninfected <- results(dds, 
                                 contrast = c('group', 'infected', 'uninfected'))
 
@@ -44,13 +41,12 @@ infected_vs_uninfected <- results(dds,
 significant_genes <- subset(infected_vs_uninfected, 
                           padj < 0.05)
 
-# Save results
+
 write.csv(as.data.frame(infected_vs_uninfected), 
           "results/deseq2_results/all_results.csv")
 write.csv(as.data.frame(significant_genes),
           "results/deseq2_results/significant_genes.csv")
 
-# Export normalized counts for visualization
 normalized_counts <- counts(dds, normalized=TRUE)
 write.csv(normalized_counts, 
           "results/deseq2_results/normalized_counts.csv")
