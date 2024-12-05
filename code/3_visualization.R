@@ -1,7 +1,4 @@
-# COVID-19 Lung Biopsy RNA-seq Analysis 
 # Visualization Script
-
-# Load required libraries
 library(ggplot2)
 library(gplots)
 library(viridis)
@@ -20,7 +17,6 @@ plot(results$log2FoldChange,
      ylab = "-log10(adjusted p-value)",
      main = "")
 
-# Add significance threshold line
 abline(h = -log10(0.05), col = "green")
 
 # Highlight IFI6 gene
